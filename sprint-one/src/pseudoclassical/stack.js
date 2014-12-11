@@ -5,22 +5,18 @@ var Stack = function() {
   this.storage = {};
 };
 
-Stack.prototype = {
-  size: function(){
-    return this.counter;
-  },
-  push: function(value){
-    this.storage[this.counter] = value;
-    this.counter++;
-  },
-  pop: function(){
-    if (this.counter > 0){
-      var value = this.storage[this.counter - 1];
-      delete this.storage[this.counter -1];
-      this.counter--;
-      return value;
-    }
-
+Stack.prototype.size = function(){
+  return this.counter;
+};
+Stack.prototype.push = function(value){
+  this.storage[this.counter] = value;
+  this.counter++;
+};
+Stack.prototype.pop = function(){
+  if (this.counter > 0){
+    var value = this.storage[this.counter - 1];
+    delete this.storage[this.counter -1];
+    this.counter--;
+    return value;
   }
-
 };

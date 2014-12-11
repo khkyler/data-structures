@@ -14,11 +14,17 @@ var stackMethods = {
     return this.counter;
   },
   push: function(value){
-    this.counter++;
     this[this.counter] = value;
+    this.counter++;
   },
   pop: function(){
-    return value;
+    if (this.counter > 0){
+      var value = this[this.counter - 1];
+      delete this[this.counter -1];
+      this.counter--;
+      return value;
+    }
+
   }
 
 };

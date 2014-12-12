@@ -19,7 +19,15 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
-
+  var current = this.head;
+  while (current){
+    if (current.value === target) {
+      return true;
+    }else {
+      current = current.next;
+    }
+  }
+  return false;
 };
 
 

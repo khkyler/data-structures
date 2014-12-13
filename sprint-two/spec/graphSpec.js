@@ -17,6 +17,9 @@ describe('graph', function() {
 
   it('should store values as nodes that were inserted', function() {
     graph.addNode('kittens');
+    graph.addNode('dogs');
+    graph.addNode('ducks');
+    graph.addNode('chickens');
     expect(graph.contains('kittens')).to.equal(true);
   });
 

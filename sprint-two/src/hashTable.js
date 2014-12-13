@@ -6,20 +6,34 @@ var HashTable = function(){
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
   var tuple = [k,v];
-  this._storage[i] = tuple;
+  if(!this._storage[i]){
+    this._storage[i] = [tuple];
+  } else {
+    console.log(tuple);
+    //var temp = this._storage[i];
+    this._storage[i].push(tuple);
+  }
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage[i][1];
+  // if (k === 'Steven')  {debugger}
+  if (!this._storage[i]){
+    return null;
+  } else {
+    for(var j = 0; j<this._storage[i].length; j++){
+      if (this._storage[i][j][0] === k){
+        return this._storage[i][j][1];
+      }
+    }
+  }
+
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  //debugger;
 
-  this._storage[i].splice(i,1,null);
-  console.log(this._storage[i]);
+  delete this._storage[i];
 };
 
 
